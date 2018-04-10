@@ -4,6 +4,8 @@ import com.ye.sell.dataobject.OrderDetail;
 import com.ye.sell.dataobject.OrderMaster;
 import com.ye.sell.dto.OrderDTO;
 import com.ye.sell.enums.OrderStatusEnum;
+import com.ye.sell.enums.PayStatusEnum;
+import com.ye.sell.repository.OrderMasterRepository;
 import com.ye.sell.service.OrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +25,9 @@ public class OrderServiceImplTest {
 
     @Autowired
     private OrderServiceImpl orderService;
+
+    @Autowired
+    private OrderMasterRepository orderMasterRepository;
 
     @Test
     public void create() {
@@ -72,9 +77,13 @@ public class OrderServiceImplTest {
 
     @Test
     public void finished() {
+        OrderDTO orderDTO = orderService.findOne("1523281167222914472");
+        assertEquals(OrderStatusEnum.FINISHED.getCode(), orderService.finished(orderDTO).getOrderStatus());
     }
 
     @Test
     public void paid() {
+        OrderDTO orderDTO = orderService.findOne("1523281167222914472");
+        assertEquals(PayStatusEnum.SUCCESS.getCode(), orderService.paid(orderDTO).getPayStatus());
     }
 }

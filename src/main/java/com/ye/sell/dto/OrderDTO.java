@@ -3,10 +3,11 @@ package com.ye.sell.dto;
 import com.ye.sell.dataobject.OrderDetail;
 import com.ye.sell.dataobject.OrderMaster;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDTO extends OrderMaster {
-    private List<OrderDetail> orderDetailList;
+    private List<OrderDetail> orderDetailList = new ArrayList<>();
 
     public List<OrderDetail> getOrderDetailList() {
         return orderDetailList;
