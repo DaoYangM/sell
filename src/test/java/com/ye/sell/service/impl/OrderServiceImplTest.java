@@ -1,12 +1,15 @@
 package com.ye.sell.service.impl;
 
 import com.ye.sell.dataobject.OrderDetail;
+import com.ye.sell.dataobject.OrderMaster;
 import com.ye.sell.dto.OrderDTO;
+import com.ye.sell.enums.OrderStatusEnum;
 import com.ye.sell.service.OrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -49,14 +52,22 @@ public class OrderServiceImplTest {
 
     @Test
     public void findOne() {
+        OrderDTO orderDTO = orderService.findOne("1523281167222914472");
+        assertNotNull(orderDTO);
     }
 
     @Test
     public void findAll() {
+        String buyerId = "123456";
+        PageRequest pageRequest = PageRequest.of(0, 10);
+        assertNotEquals(0, orderService.findAll(buyerId, pageRequest).getTotalElements());
     }
 
     @Test
     public void cancel() {
+        OrderDTO orderDTO = orderService.findOne("1523281167222914472");
+        OrderDTO orderDTOUpdate = orderService.cancel(orderDTO);
+        assertEquals(OrderStatusEnum.CANCEL.getCode(), orderDTOUpdate.getOrderStatus());
     }
 
     @Test
