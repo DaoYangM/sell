@@ -69,6 +69,12 @@ public class OrderServiceImplTest {
     }
 
     @Test
+    public void findAllByAdmin() {
+        PageRequest pageRequest = PageRequest.of(0, 10);
+        assertNotEquals(0, orderService.findAll(pageRequest).getTotalElements());
+    }
+
+    @Test
     public void cancel() {
         OrderDTO orderDTO = orderService.findOne("1523281167222914472");
         OrderDTO orderDTOUpdate = orderService.cancel(orderDTO);

@@ -13,6 +13,7 @@ import com.ye.sell.exception.SellException;
 import com.ye.sell.repository.OrderDetailRepository;
 import com.ye.sell.repository.OrderMasterRepository;
 import com.ye.sell.service.OrderService;
+import com.ye.sell.service.PayService;
 import com.ye.sell.service.ProductService;
 import com.ye.sell.utils.KeyUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +39,13 @@ public class OrderServiceImpl implements OrderService {
     private ProductService productService;
 
     private OrderDetailRepository orderDetailRepository;
+
+    private PayService payService;
+
+    @Autowired
+    public void setPayService(PayService payService) {
+        this.payService = payService;
+    }
 
     @Autowired
     public OrderServiceImpl(OrderMasterRepository orderMasterRepository,
@@ -114,6 +122,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Page<OrderDTO> findAll(Pageable pageable) {
+        Page<OrderMaster> orderMasterPage = orderMasterRepository.findAll(pageable);
+        List<OrderDTO> ordSrDTOList = OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
+        return new PageImpl<>(ordSrDTOList, pageable, orderMasterPage.getTotalElements());
+    }
+
+    @Override
     @Transactional
     public OrderDTO cancel(OrderDTO orderDTO) {
 
@@ -147,7 +162,7 @@ public class OrderServiceImpl implements OrderService {
         productService.increaseStock(cartDTOList);
 
         if (orderDTO.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())) {
-            // TODO
+            payService.refund(orderDTO);
         }
         return orderDTO;
     }

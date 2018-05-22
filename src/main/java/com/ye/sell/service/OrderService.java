@@ -11,6 +11,8 @@ public interface OrderService {
 
     Page<OrderDTO> findAll(String buyerOpenId, Pageable pageable);
 
+    Page<OrderDTO> findAll(Pageable pageable);
+
     OrderDTO cancel(OrderDTO orderDTO);
 
     OrderDTO finished(OrderDTO orderDTO);

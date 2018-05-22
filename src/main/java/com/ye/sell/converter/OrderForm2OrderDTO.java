@@ -25,9 +25,9 @@ public class OrderForm2OrderDTO {
         Gson gson = new Gson();
         List<OrderDetail> orderDetailList = new ArrayList<>();
         try {
-            orderDetailList = gson.fromJson(orderForm.getCart(),new TypeToken<List<OrderDetail>>(){}.getType());
+            orderDetailList = gson.fromJson(orderForm.getItems(),new TypeToken<List<OrderDetail>>(){}.getType());
         } catch (Exception e) {
-            log.error("[购物车对象转换]错误, String={}", orderForm.getCart());
+            log.error("[购物车对象转换]错误, String={}", orderForm.getItems());
             throw new SellException(ExceptionEnum.PARAMETER_ERROR);
         }
         orderDTO.setOrderDetailList(orderDetailList);

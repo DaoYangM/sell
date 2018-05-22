@@ -15,7 +15,9 @@ public enum ExceptionEnum {
     ORDER_FINISHED_ERROR(113, "订单完结错误"),
     ORDER_PAYMENT_ERROR(114, "订单支付失败"),
 
-    INCONSISTENT_OPEN_ID(200, "openId不一致");
+    INCONSISTENT_OPEN_ID(200, "openId不一致"),
+    WECAHT_MP_GET_ACCESSTOKEN_ERROR(301, "微信公众号获取ACCESS TOKEN错误"),
+    WECHAT_NOTIFY_DIFFERENT_AMOUNT_OF_PAYMENT(302, "【微信支付】支付金额和订单金额不同");
 
     private Integer code;
     private String msg;

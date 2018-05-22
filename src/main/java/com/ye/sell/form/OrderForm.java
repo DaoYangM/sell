@@ -17,8 +17,16 @@ public class OrderForm {
     private String address;
 
     @NotEmpty(message = "openId不能为空")
-    private String openId;
+    private String openid;
 
     @NotEmpty(message = "购物车不能为空")
-    private String cart;
+    private String items;
+
+    public void setOpenid(String openid) {
+        this.openid = openid;
+    }
+
+    public String getOpenId() {
+        return this.openid;
+    }
 }

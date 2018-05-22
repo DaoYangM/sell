@@ -1,4 +1,4 @@
-package com.ye.sell.controller;
+package com.ye.sell.controller.portal;
 
 import com.ye.sell.dataobject.ProductCategory;
 import com.ye.sell.dataobject.ProductInfo;

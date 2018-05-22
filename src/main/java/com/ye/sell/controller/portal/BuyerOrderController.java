@@ -1,4 +1,4 @@
-package com.ye.sell.controller;
+package com.ye.sell.controller.portal;
 
 import com.ye.sell.converter.OrderForm2OrderDTO;
 import com.ye.sell.dto.OrderDTO;
@@ -19,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,25 +57,25 @@ public class BuyerOrderController {
     }
 
     @GetMapping("/list")
-    public ResultVo list(@RequestParam("openId") String openId,
+    public ResultVo list(@RequestParam("openid") String openid,
                          @RequestParam(value = "pageNum", defaultValue = "0") Integer pageNum,
                          @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize ) {
 
-        if (StringUtils.isEmpty(openId)) {
-            log.error("[openId]不能为空]");
+        if (StringUtils.isEmpty(openid)) {
+            log.error("[openid]不能为空]");
             throw new SellException(ExceptionEnum.OPENID_CANNOT_BE_EMPTY);
         }
 
-        Page<OrderDTO> orderDTOPage = orderService.findAll(openId, PageRequest.of(pageNum, pageSize));
+        Page<OrderDTO> orderDTOPage = orderService.findAll(openid, PageRequest.of(pageNum, pageSize));
 
         return ResultVoUtils.success(orderDTOPage.getContent());
     }
 
     @GetMapping("/detail")
-    public ResultVo detail(@RequestParam("openId") String openId,
+    public ResultVo<OrderDTO> detail(@RequestParam("openid") String openid,
                            @RequestParam("orderId") String orderId) {
-        if (StringUtils.isEmpty(openId)) {
-            log.error("[openId]不能为空]");
+        if (StringUtils.isEmpty(openid)) {
+            log.error("[openid]不能为空]");
             throw new SellException(ExceptionEnum.OPENID_CANNOT_BE_EMPTY);
         }
 
@@ -82,15 +83,20 @@ public class BuyerOrderController {
             log.error("[orderId]不能为空]");
             throw new SellException(ExceptionEnum.ORDER_ID_CANNOT_BE_EMPTY);
         }
+        OrderDTO orderDTO = buyerService.findOrderOne(openid,orderId);
+        return ResultVoUtils.success(orderDTO);
+    }
 
-        return ResultVoUtils.success(buyerService.findOrderOne(openId,orderId));
+    @RequestMapping(value = "/dates", method = RequestMethod.GET)
+    public Date getDates() {
+        return new Date();
     }
 
     @PostMapping("/cancel")
-    public ResultVo cancel(@RequestParam("openId") String openId,
+    public ResultVo cancel(@RequestParam("openid") String openid,
                            @RequestParam("orderId") String orderId) {
-        if (StringUtils.isEmpty(openId)) {
-            log.error("[openId]不能为空]");
+        if (StringUtils.isEmpty(openid)) {
+            log.error("[openid]不能为空]");
             throw new SellException(ExceptionEnum.OPENID_CANNOT_BE_EMPTY);
         }
 
@@ -99,14 +105,14 @@ public class BuyerOrderController {
             throw new SellException(ExceptionEnum.ORDER_ID_CANNOT_BE_EMPTY);
         }
 
-        return ResultVoUtils.success(buyerService.cancelOrder(openId,orderId));
+        return ResultVoUtils.success(buyerService.cancelOrder(openid,orderId));
     }
 
     @PostMapping("/finished")
-    public ResultVo finished(@RequestParam("openId") String openId,
+    public ResultVo finished(@RequestParam("openid") String openid,
                            @RequestParam("orderId") String orderId) {
-        if (StringUtils.isEmpty(openId)) {
-            log.error("[openId]不能为空]");
+        if (StringUtils.isEmpty(openid)) {
+            log.error("[openid]不能为空]");
             throw new SellException(ExceptionEnum.OPENID_CANNOT_BE_EMPTY);
         }
 
@@ -115,7 +121,7 @@ public class BuyerOrderController {
             throw new SellException(ExceptionEnum.ORDER_ID_CANNOT_BE_EMPTY);
         }
 
-        return ResultVoUtils.success(buyerService.finishedOrder(openId, orderId));
+        return ResultVoUtils.success(buyerService.finishedOrder(openid, orderId));
     }
     // paying order
 }

@@ -2,18 +2,28 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: 123456
-    url: jdbc:mysql://192.168.1.104/sell?characterEncoding=utf-8&useSSL=false
+    password: yedeyang
+    url: jdbc:mysql://101.132.181.196/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
 
   jackson:
     default-property-inclusion: non_null
+    serialization:
+        write-dates-as-timestamps: true
 
-server:
-  servlet:
-    context-path: /sell
+#server:
+#  servlet:
+#    context-path: /sell
 
+wechat:
+#  mpAppId: wx906c8298344c7927
+  mpAppId: wxd898fcb01713c658
+  mpAppSecret: f9f4ce494abdfb13265a73a134eab780
+  mchId: 1483469312
+  mchKey: C5245D70627C1F8E9964D494B0735025
+  keyPath: D:/developer/h5.p12
+  notifyUrl: http://daoyang.natapp1.cc/pay/notify
 
 #logging:
 #  pattern:
