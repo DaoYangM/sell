@@ -7,6 +7,11 @@ spring:
   jpa:
     show-sql: true
 
+  freemarker:
+    charset: UTF-8
+    check-template-location: true
+    template-loader-path: classpath:/templates
+
   jackson:
     default-property-inclusion: non_null
     serialization:

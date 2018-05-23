@@ -54,11 +54,11 @@ public class SellerOrderController {
                 map.put("msg", "完结订单成功！");
             }
             map.put("code", "success");
-            return new ModelAndView("order/result", map);
+            return new ModelAndView("common/result", map);
         } catch (SellException e) {
             map.put("msg", e.getMessage());
             map.put("code", "danger");
-            return new ModelAndView("order/result", map);
+            return new ModelAndView("common/result", map);
         }
     }
 

@@ -1,5 +1,8 @@
 package com.ye.sell.dataobject;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ye.sell.enums.ProductStatusEnum;
+import com.ye.sell.utils.EnumUtil;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -33,4 +36,9 @@ public class ProductInfo {
     private Date createTime;
 
     private Date updateTime;
+
+    @JsonIgnore
+    public ProductStatusEnum getProductStatusEnum() {
+        return EnumUtil.getByCode(productStatus, ProductStatusEnum.class);
+    }
 }

@@ -1,6 +1,7 @@
 package com.ye.sell.service.impl;
 
 import com.ye.sell.dataobject.ProductInfo;
+import com.ye.sell.enums.ProductStatusEnum;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,19 @@ public class ProductServiceImplTest {
         productInfo.setCategoryType(1);
 
         assertNotNull(productService.save(productInfo));
+    }
+
+    @Test
+    public void onSale() {
+        ProductInfo productInfo = productService.onSale("123456");
+
+        assertNotNull(productInfo);
+    }
+
+    @Test
+    public void offSale() {
+        ProductInfo productInfo = productService.offSale("123456");
+
+        assertEquals(ProductStatusEnum.DOWN.getCode(), productInfo.getProductStatus());
     }
 }

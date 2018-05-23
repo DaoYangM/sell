@@ -1,15 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://cdn.bootcss.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet">
-
-</head>
-<body>
+<@override name="container">
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
@@ -129,12 +118,13 @@
                         <a class="btn btn-default btn-primary disabled" href="#">订单已完结</a>
                         <#else >
                         <a class="btn btn-default btn-primary" href="/seller/order/cancel?orderId=${orderDTO.getOrderId()}&type=finished">完结订单</a>
+                        <a class="btn btn-default btn-danger" href="/seller/order/cancel?orderId=${orderDTO.getOrderId()}">取消订单</a>
                     </#if>
-                    <a class="btn btn-default btn-danger" href="/seller/order/cancel?orderId=${orderDTO.getOrderId()}">取消订单</a>
+
             </#if>
             <a href="/seller/order/list" class="btn btn btn-default btn-warning" style="float: right">回到列表</a>
         </div>
     </div>
 </div>
-</body>
-</html>
+</@override>
+<@extends name="/common/base.ftl"/>

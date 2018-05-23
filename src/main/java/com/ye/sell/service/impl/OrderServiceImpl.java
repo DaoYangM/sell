@@ -139,7 +139,7 @@ public class OrderServiceImpl implements OrderService {
         }
 
         if (!orderDTO.getOrderStatus().equals(OrderStatusEnum.NEW.getCode())) {
-            log.error("[取消订单] 订单状态不正确, orderId={}, orderStatus={}",
+            log.error("[取消订单] 订单状态不正确（不是新订单不能取消）, orderId={}, orderStatus={}",
                     orderDTO.getOrderId(), orderDTO.getOrderStatus());
             throw new SellException(ExceptionEnum.ORDER_STATUS_ERROR);
         }

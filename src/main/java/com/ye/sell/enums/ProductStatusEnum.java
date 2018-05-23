@@ -1,6 +1,6 @@
 package com.ye.sell.enums;
 
-public enum ProductStatusEnum {
+public enum ProductStatusEnum implements CodeEnum{
 
     UP(0, "上架"),
     DOWN(1, "下架");
