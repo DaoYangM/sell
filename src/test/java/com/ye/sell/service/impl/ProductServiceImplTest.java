@@ -2,6 +2,7 @@ package com.ye.sell.service.impl;
 
 import com.ye.sell.dataobject.ProductInfo;
 import com.ye.sell.enums.ProductStatusEnum;
+import com.ye.sell.utils.KeyUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class ProductServiceImplTest {
     public void save() {
         ProductInfo productInfo = new ProductInfo();
 
-        productInfo.setProductId("1234567");
+        productInfo.setProductId(KeyUtils.getUniqueKey());
         productInfo.setProductName("Test2");
         productInfo.setProductPrice(new BigDecimal(111));
         productInfo.setProductStock(1121);

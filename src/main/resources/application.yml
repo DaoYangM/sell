@@ -16,7 +16,11 @@ spring:
     default-property-inclusion: non_null
     serialization:
         write-dates-as-timestamps: true
-
+  session:
+    store-type: redis
+  redis:
+    host: localhost
+    port: 6379
 #server:
 #  servlet:
 #    context-path: /sell
@@ -29,9 +33,3 @@ wechat:
   mchKey: C5245D70627C1F8E9964D494B0735025
   keyPath: D:/developer/h5.p12
   notifyUrl: http://daoyang.natapp1.cc/pay/notify
-
-#logging:
-#  pattern:
-#    console: "%d - %msg%n"
-#    level: debug
-#  path: D:/

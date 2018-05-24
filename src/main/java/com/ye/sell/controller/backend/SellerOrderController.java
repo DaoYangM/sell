@@ -7,6 +7,7 @@ import com.ye.sell.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +31,8 @@ public class SellerOrderController {
     @GetMapping("/list")
     public ModelAndView list(@RequestParam(value = "page", defaultValue = "1") Integer page,
                              @RequestParam(value = "size", defaultValue = "10") Integer size) {
-        Page<OrderDTO> orderDTOPage = orderService.findAll(PageRequest.of(page - 1, size));
+        Sort sort = new Sort(Sort.Direction.DESC, "createTime");
+        Page<OrderDTO> orderDTOPage = orderService.findAll(PageRequest.of(page - 1, size, sort));
 
         Map<String, Object> map = new HashMap<>();
         map.put("orderDTOPage", orderDTOPage);

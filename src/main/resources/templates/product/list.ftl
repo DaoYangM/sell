@@ -81,7 +81,7 @@
                         ${productInfo.updateTime}
                     </td>
                     <td>
-                        <a href="/seller/order/detail?orderId=${productInfo.productId}">修改</a>
+                        <a href="/seller/product/index?productId=${productInfo.productId}">修改</a>
                     </td>
                     <td>
                     <#if productInfo.getProductStatusEnum().message != "上架">

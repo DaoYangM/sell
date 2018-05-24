@@ -15,6 +15,7 @@ import com.ye.sell.repository.OrderMasterRepository;
 import com.ye.sell.service.OrderService;
 import com.ye.sell.service.PayService;
 import com.ye.sell.service.ProductService;
+import com.ye.sell.service.WebSocket;
 import com.ye.sell.utils.KeyUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -42,6 +43,8 @@ public class OrderServiceImpl implements OrderService {
 
     private PayService payService;
 
+    private WebSocket webSocket;
+
     @Autowired
     public void setPayService(PayService payService) {
         this.payService = payService;
@@ -54,6 +57,11 @@ public class OrderServiceImpl implements OrderService {
         this.orderMasterRepository = orderMasterRepository;
         this.productService = productService;
         this.orderDetailRepository = orderDetailRepository;
+    }
+
+    @Autowired
+    public void setWebSocket(WebSocket webSocket) {
+        this.webSocket = webSocket;
     }
 
     @Override
@@ -92,6 +100,8 @@ public class OrderServiceImpl implements OrderService {
         orderDTO.setOrderAmount(orderAmount);
         BeanUtils.copyProperties(orderDTO, orderMaster);
         orderMasterRepository.save(orderMaster);
+
+        webSocket.sendMessage("有新的订单");
 
         return orderDTO;
     }
