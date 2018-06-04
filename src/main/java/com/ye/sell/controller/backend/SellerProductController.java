@@ -11,6 +11,7 @@ import com.ye.sell.utils.KeyUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -75,6 +76,7 @@ public class SellerProductController {
         return new ModelAndView("product/index", map);
     }
 
+    @CacheEvict(cacheNames = "product", key = "123")
     @PostMapping("/save")
     public Object save(@Validated ProductForm productForm, BindingResult result) {
         Map<String, Object> map = new HashMap<>();
@@ -100,6 +102,7 @@ public class SellerProductController {
     }
 
 
+    @CacheEvict(cacheNames = "product", key = "123")
     @GetMapping("/on_sale")
     public ModelAndView onSale(@RequestParam("productId") String productId) {
         Map<String, Object> map = new HashMap<>();
@@ -116,6 +119,7 @@ public class SellerProductController {
         }
     }
 
+    @CacheEvict(cacheNames = "product", key = "123")
     @GetMapping("/off_sale")
     public ModelAndView offSale(@RequestParam("productId") String productId) {
         Map<String, Object> map = new HashMap<>();

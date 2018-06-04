@@ -23,6 +23,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.ye.sell.enums.ExceptionEnum.PARAMETER_ERROR;
+
 @RestController
 @RequestMapping("/buyer/order")
 @Slf4j
@@ -41,7 +43,7 @@ public class BuyerOrderController {
     public ResultVo create(@Validated OrderForm orderForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             log.error("[创建订单参数错误]");
-            throw new SellException(bindingResult.getFieldError().getDefaultMessage());
+            throw new SellException(PARAMETER_ERROR.getCode() ,bindingResult.getFieldError().getDefaultMessage());
         }
 
         OrderDTO orderDTO = OrderForm2OrderDTO.convert(orderForm);
