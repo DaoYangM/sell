@@ -9,7 +9,8 @@ import com.ye.sell.utils.EnumUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderDTO extends OrderMaster {
+public class
+OrderDTO extends OrderMaster {
     private List<OrderDetail> orderDetailList = new ArrayList<>();
 
     public List<OrderDetail> getOrderDetailList() {

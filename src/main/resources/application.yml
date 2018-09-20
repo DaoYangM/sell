@@ -21,15 +21,15 @@ spring:
   redis:
     host: localhost
     port: 6379
-#server:
-#  servlet:
-#    context-path: /sell
+server:
+  servlet:
+    context-path: /sell
 
 wechat:
 #  mpAppId: wx906c8298344c7927
   mpAppId: wxd898fcb01713c658
   mpAppSecret: f9f4ce494abdfb13265a73a134eab780
-  mchId: 1483469312
-  mchKey: C5245D70627C1F8E9964D494B0735025
+  mchId:
+  mchKey: C5245D70627C1F8E9964D494B07350251483469312
   keyPath: D:/developer/h5.p12
   notifyUrl: http://daoyang.natapp1.cc/pay/notify

@@ -23,7 +23,7 @@
     </div>
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <form class="form-horizontal" role="form" action="/login" method="POST">
+            <form class="form-horizontal" role="form" action="/sell/login" method="POST">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
                     <div class="col-sm-10">

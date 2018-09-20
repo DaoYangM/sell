@@ -98,7 +98,8 @@ public class SellerProductController {
 
         map.put("msg", "操作成功！");
         map.put("code", "success");
-        return "redirect:/seller/product/index?productId=" + productInfo.getProductId();
+//        return "redirect:/seller/product/index?productId=" + productInfo.getProductId();
+        return "redirect:/seller/product/list";
     }
 
 

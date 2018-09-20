@@ -81,13 +81,13 @@
                         ${productInfo.updateTime}
                     </td>
                     <td>
-                        <a href="/seller/product/index?productId=${productInfo.productId}">修改</a>
+                        <a href="/sell/seller/product/index?productId=${productInfo.productId}">修改</a>
                     </td>
                     <td>
                     <#if productInfo.getProductStatusEnum().message != "上架">
-                            <a href="/seller/product/on_sale?productId=${productInfo.productId}">上架</a>
+                            <a href="/sell/seller/product/on_sale?productId=${productInfo.productId}">上架</a>
                             <#else >
-                                <a href="/seller/product/off_sale?productId=${productInfo.productId}">下架</a>
+                                <a href="/sell/seller/product/off_sale?productId=${productInfo.productId}">下架</a>
                     </#if>
                     </td>
                 </tr>
@@ -103,7 +103,7 @@
             <ul class="pagination">
                 <li>
                 <#if productInfoPage.hasPrevious()>
-                    <a href="/seller/order/list?page=${productInfoPage.getNumber()}&size=${productInfoPage.getSize()}">Prev</a>
+                    <a href="/sell/seller/order/list?page=${productInfoPage.getNumber()}&size=${productInfoPage.getSize()}">Prev</a>
                 <#else >
                          <a class="btn disabled" href="#">Prev</a>
                 </#if>
@@ -114,7 +114,7 @@
                     <#if productInfoPage.getNumber() + 1 == index>
                         <a class="btn disabled" href="#"> ${index}</a>
                     <#else >
-                         <a href="/seller/order/list?page=${index}&size=${productInfoPage.getSize()}"> ${index}</a>
+                         <a href="/sell/seller/order/list?page=${index}&size=${productInfoPage.getSize()}"> ${index}</a>
                     </#if>
 
                 </li>
@@ -122,7 +122,7 @@
 
                 <li>
                 <#if productInfoPage.hasNext()>
-                    <a href="/seller/order/list?page=${productInfoPage.getNumber() + 2}&size=${productInfoPage.getSize()}">Next</a>
+                    <a href="/sell/seller/order/list?page=${productInfoPage.getNumber() + 2}&size=${productInfoPage.getSize()}">Next</a>
                 <#else >
                     <a class="btn disabled" href="#">Next</a>
                 </#if>

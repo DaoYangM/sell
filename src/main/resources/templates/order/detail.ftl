@@ -117,12 +117,12 @@
                     <#if orderDTO.orderStatus == 1>
                         <a class="btn btn-default btn-primary disabled" href="#">订单已完结</a>
                         <#else >
-                        <a class="btn btn-default btn-primary" href="/seller/order/cancel?orderId=${orderDTO.getOrderId()}&type=finished">完结订单</a>
-                        <a class="btn btn-default btn-danger" href="/seller/order/cancel?orderId=${orderDTO.getOrderId()}">取消订单</a>
+                        <a class="btn btn-default btn-primary" href="/sell/seller/order/cancel?orderId=${orderDTO.getOrderId()}&type=finished">完结订单</a>
+                        <a class="btn btn-default btn-danger" href="/sell/seller/order/cancel?orderId=${orderDTO.getOrderId()}">取消订单</a>
                     </#if>
 
             </#if>
-            <a href="/seller/order/list" class="btn btn btn-default btn-warning" style="float: right">回到列表</a>
+            <a href="/sell/seller/order/list" class="btn btn btn-default btn-warning" style="float: right">回到列表</a>
         </div>
     </div>
 </div>

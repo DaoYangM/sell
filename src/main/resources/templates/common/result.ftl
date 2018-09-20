@@ -17,7 +17,7 @@
                     <h4>
                         ${msg}
                     </h4>
-                    <strong>结果</strong> ${msg} <a href="/seller/order/list">3秒后跳转</a>
+                    <strong>结果</strong> ${msg} <a href="/sell/seller/order/list">3秒后跳转</a>
                 </div>
             </div>
         </div>

@@ -74,9 +74,9 @@
                         <td>
                             ${orderDTO.createTime}
                         </td>
-                        <td><a href="/seller/order/detail?orderId=${orderDTO.getOrderId()}">详情</a></td>
+                        <td><a href="/sell/seller/order/detail?orderId=${orderDTO.getOrderId()}">详情</a></td>
                         <#if orderDTO.getOrderStatusEnum(orderDTO.getOrderStatus()).msg != "已取消">
-                            <td><a href="/seller/order/cancel?orderId=${orderDTO.getOrderId()}">取消</a></td>
+                            <td><a href="/sell/seller/order/cancel?orderId=${orderDTO.getOrderId()}">取消</a></td>
                         </#if>
 
                     </tr>
@@ -92,7 +92,7 @@
         <ul class="pagination">
             <li>
                 <#if orderDTOPage.hasPrevious()>
-                    <a href="/seller/order/list?page=${orderDTOPage.getNumber()}&size=${orderDTOPage.getSize()}">Prev</a>
+                    <a href="/sell/seller/order/list?page=${orderDTOPage.getNumber()}&size=${orderDTOPage.getSize()}">Prev</a>
                     <#else >
                          <a class="btn disabled" href="#">Prev</a>
                 </#if>
@@ -103,7 +103,7 @@
                     <#if orderDTOPage.getNumber() + 1 == index>
                         <a class="btn disabled" href="#"> ${index}</a>
                         <#else >
-                         <a href="/seller/order/list?page=${index}&size=${orderDTOPage.getSize()}"> ${index}</a>
+                         <a href="/sell/seller/order/list?page=${index}&size=${orderDTOPage.getSize()}"> ${index}</a>
                     </#if>
 
                 </li>
@@ -111,7 +111,7 @@
 
             <li>
                 <#if orderDTOPage.hasNext()>
-                    <a href="/seller/order/list?page=${orderDTOPage.getNumber() + 2}&size=${orderDTOPage.getSize()}">Next</a>
+                    <a href="/sell/seller/order/list?page=${orderDTOPage.getNumber() + 2}&size=${orderDTOPage.getSize()}">Next</a>
                 <#else >
                     <a class="btn disabled" href="#">Next</a>
                 </#if>
@@ -143,7 +143,7 @@
 
 <#--播放音乐-->
 <audio id="notice" loop="loop">
-    <source src="/mp3/song.mp3" type="audio/mpeg" />
+    <source src="/sell/mp3/song.mp3" type="audio/mpeg" />
 </audio>
 
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
